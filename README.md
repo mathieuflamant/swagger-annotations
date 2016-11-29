@@ -65,6 +65,8 @@ console.dir(typeof swaggerData); // "object"
     - metadata.security - [[{Security Requirement Object}](http://swagger.io/specification/#securityRequirementObject)] A declaration of which security schemes are applied for the API as a whole. The list of values describes alternative security schemes that can be used (that is, there is a logical OR between the security requirements). Individual operations can override this definition.
     - metadata.externalDocs - [{External Documentation Object}](http://swagger.io/specification/#externalDocumentationObject) Additional external documentation.
 
+* autocheck - {boolean} When set to false, swagger annotations need to be explicit. (OPTIONAL) **Default:** true.
+
 * src - {string} Absolute path to the module (Express Router) that is intended to be used for creating Swagger documentation. (REQUIRED)
 
 * dest - {string} Absolute path to the directory to use for the Swagger document ouput. (OPTIONAL) If not specified, no file be written to disk.
