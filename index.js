@@ -10,17 +10,22 @@ module.exports = function(opts) {
   // Get file path of module.
   var filePath = resolve.sync(path.join(process.cwd(), opts.src));
 
+  // Autocheck is set to true by default (original behavior)
+  if(typeof opts.autocheck != 'boolean'){
+    opts.autocheck = true;
+  }
+
   // Read in our file source.
   var fileSource = helpers.readFileSync(filePath);
 
   // Get all annotations from our input file.
-  var annotations = parser(fileSource);
+  var annotations = parser(fileSource, opts);
 
   /*
    * Get our formatted swagger data by passing the
    * annotations and the required router module.
    */
-  var swaggerData = swaggotate(annotations, require(filePath));
+  var swaggerData = swaggotate(annotations, require(filePath), opts);
 
   // Merge any incoming metadata into our base data.
   Object.assign(swaggerData, opts.metadata || {});
